@@ -39,7 +39,7 @@ az appconfig create \
 > ```
 ---
 
-## Retrieve connection string
+## Retrieve the connection string
 
 Since our app is just going to be reading from the configuration, we can retrieve the "Primary Read Only" connection string.
 

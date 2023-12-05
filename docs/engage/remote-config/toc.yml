@@ -2,5 +2,7 @@
   href: overview.md
 - name: Create an App Configuration store
   href: create.md
-- name: Key-Value configurations
-  href: key-value-config.md
+- name: Create Key-Value configurations
+  href: key-value-create.md
+- name: Consume Key-Value configurations
+  href: key-value-consume.md
