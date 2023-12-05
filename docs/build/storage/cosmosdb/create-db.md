@@ -4,7 +4,7 @@ TODO add more docs about all this.
 
 ## Prerequisites
 
-[!INCLUDE [resource-groups](../../../includes/azure-cli-prereqs.md)]
+[!INCLUDE [azure-cli-prereqs](../../../includes/azure-cli-prereqs.md)]
 
 ## Create a resource group
 
@@ -87,14 +87,14 @@ az cosmosdb sql container create \
   --name <conatiner-name> \
   --partition-key-path <partition-key-path>
 ```
-> For example, to create a container named `Comics` in an existing database `MyMobileData`:
+> For example, to create a container named `MyBooks` in an existing database `MyMobileData`:
 >
 > ```
 > az cosmosdb sql container create \
 >   --resource-group "MyMobileResources" \
 >   --account-name "mymobiledataaccount" \
 >   --database-name "MyMobileData" \
->   --name "Comics" \
+>   --name "MyBooks" \
 >   --partition-key-path "/publish_year"
 > ```
 ---

@@ -1,2 +1,6 @@
 - name: Overview
   href: overview.md
+- name: Create an App Configuration store
+  href: create.md
+- name: Key-Value configurations
+  href: key-value-config.md
