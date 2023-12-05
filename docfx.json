@@ -13,7 +13,7 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "**/images/**"
         ]
       }
     ],
@@ -27,6 +27,11 @@
       "_appTitle": "Azure Mobile Services",
       "_enableSearch": true,
       "pdf": true
+    },
+    "markdownEngineProperties": {
+      "markdigExtensions": [
+        "attributes"
+      ]
     }
   }
 }

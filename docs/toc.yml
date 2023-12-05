@@ -1,4 +1,15 @@
-- name: Introduction
-  href: introduction.md
-- name: Getting Started
-  href: getting-started.md
+items:
+- name: Overview
+  href: overview.md
+- name: Build
+  href: build/toc.yml
+- name: Test
+  href: test/toc.yml
+- name: Release
+  href: release/toc.yml
+- name: Monitor
+  href: monitor/toc.yml
+- name: Engage
+  href: engage/toc.yml
+- name: Azure
+  href: azure/toc.yml
