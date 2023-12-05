@@ -1,8 +1,8 @@
 # Configuration
 
-https://learn.microsoft.com/dotnet/core/extensions/configuration
+https://learn.microsoft.com/core/extensions/configuration
 
-## `appsettings.json`
+## Using `appsettings.json`
 
 https://learn.microsoft.com/aspnet/core/fundamentals/configuration
 
@@ -10,7 +10,7 @@ https://learn.microsoft.com/aspnet/core/fundamentals/configuration
 
 One such feature that we may want to use is settings files, such as `appsettings.json`. This feature is enabled via the `JsonConfigurationProvider`.
 
-### Adding `appsettings.json` to the project
+### Adding an `appsettings.json`
 
 #### [.NET MAUI](#tab/dotnet-maui)
 
@@ -42,30 +42,26 @@ To enable `appsettings.json` in .NET MAUI apps, we need to do a few things:
 
 The default web app builder automatically reads the `appsettings.json` file, so nothong needs to be done.
 
-#### [JS](#tab/js-angular)
-
-Hello
-
 ---
 
-### Using `appsettings.json`
+### Consuming `appsettings.json`
 
 Once your app has loaded the configurations, it is easy to use:
 
-#### [.NET](#tab/dotnet/dotnet-maui)
+```cs
+public class MyViewModel
+{
+    private readonly IConfiguration config;
 
-[!INCLUDE [appsettings-using](includes/appsettings-using.md)]
+    public MyViewModel(IConfiguration configuration)
+    {
+        config = configuration;
+    }
 
-#### [.NET](#tab/dotnet/dotnet-aspnet)
-
-[!INCLUDE [appsettings-using](includes/appsettings-using.md)]
-
-#### [JS](#tab/js-angular)
-
-Hello
-
----
-
+    public string MySetting =>
+        config["MySetting"] ?? "<unavailable>";
+}
+```
 
 ## Using .NET Runtime configuration settings
 
@@ -73,36 +69,37 @@ Loading files on app startup may have performance implications, so an alternativ
 
 These settings are only boolean values, so can only be "on" or "off".
 
-https://learn.microsoft.com/dotnet/core/runtime-config
+https://learn.microsoft.com/core/runtime-config
 
-### Adding .NET Runtime configuration settings to the project
+### Adding .NET Runtime configuration settings
 
-#### [.NET](#tab/dotnet/dotnet-maui)
+Create a new `runtimeconfig.template.json` file in the project root folder:
 
-[!INCLUDE [runtime-config-adding](includes/runtime-config-adding.md)]
+> The full path is `<project-dir>/runtimeconfig.template.json`
 
-#### [.NET](#tab/dotnet/dotnet-aspnet)
+```json
+{
+    "configProperties":
+    {
+        "MySetting": "MyValue"
+    }
+}
+```
 
-[!INCLUDE [runtime-config-adding](includes/runtime-config-adding.md)]
+### Consuming .NET Runtime configuration settings
 
-#### [JS](#tab/js/js-angular)
+Load the settings as an `object?`:
 
-TODO
+```cs
+var data = AppContext.GetData("MySetting");
+if (data is string value)
+{
+    // do something with the string value
+}
+```
 
----
+If the setting is just a boolean value, then there is a convenient `TryGetSwitch`:
 
-### Using .NET Runtime configuration settings
-
-#### [.NET](#tab/dotnet/dotnet-maui)
-
-[!INCLUDE [runtime-config-using](includes/runtime-config-using.md)]
-
-#### [.NET](#tab/dotnet/dotnet-aspnet)
-
-[!INCLUDE [runtime-config-using](includes/runtime-config-using.md)]
-
-#### [JS](#tab/js/js-angular)
-
-TODO
-
----
+```cs
+var wasFound = AppContext.TryGetSwitch("MySetting", out var isEnabled);
+```
